@@ -20,7 +20,7 @@ This project provides a command line program to copy and delete files in a Valor
 
 ## Install and use
 
-1. Download the exe file from [download link](link_to_download).
+1. Download the exe file from [download link]([link_to_download](https://drive.google.com/drive/folders/1U4eFpbR6c9WVtzAGX8l8WQ-cjO0iy_pv?usp=sharing)).
 2. Run the exe file to start the program.
 3. Select the Valorant folder by clicking the "Choose folder" button following the path "C:/Riot Games/VALORANT"
 
