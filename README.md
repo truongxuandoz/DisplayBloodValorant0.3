@@ -38,3 +38,5 @@ If you find an error or have suggestions for improvement, please contact me pers
 ## Author's words
 
 Because the need to copy and paste files by hand is very complicated, I wrote this software so that blood red can be successfully installed with just 1 click. I code entirely in python, if anyone wants the source code, please contact me. Thank you.
+
+Author: Dylan Do
