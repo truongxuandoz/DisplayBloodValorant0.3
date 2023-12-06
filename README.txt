@@ -33,6 +33,7 @@ Nếu bạn tìm thấy lỗi hoặc có đề xuất cải thiện, hãy liên 
 
 
 ## Lời của tác giả
+Mình là Dylan, mình code chương trình này hoàn toàn bằng python. Có vấn đề gì vui lòng liên hệ email: "truongxuando4@gmail.com". Xin cảm ơn!
 
-Do nhu cầu copy paste file bằng tay rất lằng nhằng nên mình đã viết ra phần mềm này để chỉ cần 1 click là có thể cài đặt thành công máu đỏ. Mình code hoàn toàn bằng python, ai muốn source code thì hãy cứ liên hệ mình nhé. Xin cảm ơn.
+
 
