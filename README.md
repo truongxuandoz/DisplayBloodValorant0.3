@@ -5,7 +5,7 @@ Valorant Display Blood 0.3
 
 Dự án này cung cấp một chương trình dòng lệnh để sao chép và xóa các tệp tin để có thể hiển thị màu đỏ trong Valorant.
 
-![Uploading image.png…]()
+[![Uploading image.png…]()](https://i.redd.it/sr6rqm13v6r41.png)
 
 ## Tính năng
 
