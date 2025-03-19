@@ -11,9 +11,8 @@ Dự án này cung cấp một chương trình dòng lệnh để sao chép và 
 
 ## Tính năng
 
-- Sao chép các tệp tin cần thiết vào thư mục Valorant.
-- Xóa các tệp tin không cần thiết khỏi thư mục Valorant.
-
+- Hiển thị Bl00d trong Valorant.
+  
 ## Yêu cầu hệ thống
 
 - Hệ điều hành: Windows
