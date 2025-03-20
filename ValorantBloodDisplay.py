@@ -23,44 +23,36 @@ def extract_resources():
     temp_dir = Path(tempfile.mkdtemp())
     base_path = get_base_path()
     
-    # Copy embedded files to temp directory
     for filename in ["MatureData-WindowsClient.pak", "MatureData-WindowsClient.sig"]:
         src = base_path / filename
         if src.exists():
             shutil.copy2(src, temp_dir / filename)
     
-    # Register cleanup on exit
     atexit.register(lambda: shutil.rmtree(temp_dir, ignore_errors=True))
     return temp_dir
 
-# Extract resources at startup
 TEMP_RESOURCE_DIR = extract_resources()
 
 class ModernUI(ctk.CTk):
     def __init__(self):
         super().__init__()
         
-        # Configure window
         self.title("Valorant Blood Display")
         self.geometry("700x600")
         self.minsize(600, 500)
         
-        # Configure the grid layout
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
         
-        # Set theme and colors
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
         
-        # Define colors
         self.accent_color = "#ff4444"
         self.hover_color = "#cc3333"
         self.bg_color = "#1a1a1a"
         self.secondary_color = "#2d2d2d"
         
-        # Define fonts that support Vietnamese
-        self.font_family = "Segoe UI"  # Excellent Vietnamese support and modern look
+        self.font_family = "Segoe UI"  
         
         self.configure(fg_color=self.bg_color)
         
@@ -75,7 +67,6 @@ class ModernUI(ctk.CTk):
         tutorial.resizable(False, False)
         tutorial.grab_set()  # Make it modal
         
-        # Set icon if available
         try:
             if getattr(sys, 'frozen', False):
                 application_path = sys._MEIPASS
@@ -86,17 +77,17 @@ class ModernUI(ctk.CTk):
             if os.path.exists(icon_path):
                 tutorial.iconbitmap(icon_path)
         except Exception:
-            pass  # Ignore icon errors
+            pass  
         
-        # Configure the grid layout
+  
         tutorial.grid_columnconfigure(0, weight=1)
         tutorial.grid_rowconfigure(0, weight=1)
         
-        # Create frame
+    
         content_frame = ctk.CTkFrame(tutorial, fg_color=self.secondary_color)
         content_frame.pack(fill="both", expand=True, padx=20, pady=20)
         
-        # Title
+
         title = ctk.CTkLabel(
             content_frame,
             text="How to Use Valorant Blood Display",
@@ -105,7 +96,7 @@ class ModernUI(ctk.CTk):
         )
         title.pack(pady=(20, 10))
         
-        # Tutorial text
+
         tutorial_text = ctk.CTkTextbox(
             content_frame,
             font=ctk.CTkFont(family=self.font_family, size=12),
@@ -142,8 +133,7 @@ class ModernUI(ctk.CTk):
         
         tutorial_text.insert("1.0", instructions)
         tutorial_text.configure(state="disabled")
-        
-        # Close button
+
         close_button = ctk.CTkButton(
             content_frame,
             text="Đóng Hướng Dẫn",
@@ -156,7 +146,7 @@ class ModernUI(ctk.CTk):
         close_button.pack(pady=(0, 20))
         
     def create_widgets(self):
-        # Create main frame with rounded corners
+
         main_frame = ctk.CTkFrame(
             self,
             fg_color=self.secondary_color,
@@ -164,9 +154,8 @@ class ModernUI(ctk.CTk):
         )
         main_frame.grid(row=0, column=0, padx=30, pady=30, sticky="nsew")
         main_frame.grid_columnconfigure(0, weight=1)
-        main_frame.grid_rowconfigure(5, weight=1)  # Make the bottom row expandable
-        
-        # Credit label at the very top
+        main_frame.grid_rowconfigure(5, weight=1)  
+
         credit_frame = ctk.CTkFrame(
             main_frame,
             fg_color=self.accent_color,
@@ -185,7 +174,7 @@ class ModernUI(ctk.CTk):
         )
         credit_label.place(relx=0.5, rely=0.5, anchor="center")
         
-        # Title frame with tutorial button
+
         title_frame = ctk.CTkFrame(
             main_frame,
             fg_color="transparent"
@@ -193,7 +182,7 @@ class ModernUI(ctk.CTk):
         title_frame.grid(row=1, column=0, padx=20, pady=(30, 0), sticky="ew")
         title_frame.grid_columnconfigure(0, weight=1)  # Center title
         
-        # Title in center
+
         title = ctk.CTkLabel(
             title_frame, 
             text="VALORANT HIỂN THỊ MÁU",
@@ -202,7 +191,7 @@ class ModernUI(ctk.CTk):
         )
         title.grid(row=0, column=0)
         
-        # Subtitle with accent color
+
         subtitle = ctk.CTkLabel(
             title_frame,
             text="Bật hiệu ứng máu trong trò chơi của bạn",
@@ -211,7 +200,7 @@ class ModernUI(ctk.CTk):
         )
         subtitle.grid(row=2, column=0, pady=(10, 20))
         
-        # Separator
+
         separator = ctk.CTkFrame(
             main_frame,
             height=2,
@@ -219,7 +208,7 @@ class ModernUI(ctk.CTk):
         )
         separator.grid(row=2, column=0, padx=40, pady=(0, 30), sticky="ew")
         
-        # Valorant folder frame with subtle background
+
         folder_frame = ctk.CTkFrame(
             main_frame,
             fg_color=self.bg_color,
@@ -244,21 +233,20 @@ class ModernUI(ctk.CTk):
         )
         self.folder_path.grid(row=1, column=0, padx=15, pady=(0, 10), sticky="w")
         
-        # Button frame
+
         button_frame = ctk.CTkFrame(
             main_frame,
             fg_color="transparent"
         )
         button_frame.grid(row=4, column=0, pady=(10, 20), sticky="nsew")
-        
-        # Center frame for buttons
+
         center_button_frame = ctk.CTkFrame(
             button_frame,
             fg_color="transparent"
         )
         center_button_frame.place(relx=0.5, rely=0.5, anchor="center")
         
-        # Select folder button with hover effect
+
         self.select_button = ctk.CTkButton(
             center_button_frame,
             text="Chọn Thư Mục",
@@ -274,7 +262,7 @@ class ModernUI(ctk.CTk):
         )
         self.select_button.grid(row=0, column=0, padx=15)
         
-        # Tutorial button with hover effect
+
         self.tutorial_button = ctk.CTkButton(
             center_button_frame,
             text="Hướng Dẫn",
@@ -290,7 +278,7 @@ class ModernUI(ctk.CTk):
         )
         self.tutorial_button.grid(row=0, column=1, padx=15)
         
-        # Apply button with hover effect
+
         self.apply_button = ctk.CTkButton(
             center_button_frame,
             text="Áp Dụng Hiển Thị Máu",
@@ -306,7 +294,7 @@ class ModernUI(ctk.CTk):
         )
         self.apply_button.grid(row=0, column=2, padx=15)
         
-        # Status frame with custom background
+  
         status_frame = ctk.CTkFrame(
             main_frame,
             fg_color=self.bg_color,
@@ -315,7 +303,7 @@ class ModernUI(ctk.CTk):
         status_frame.grid(row=5, column=0, padx=30, pady=(0, 30), sticky="ew")
         status_frame.grid_columnconfigure(0, weight=1)
         
-        # Status label
+
         status_label = ctk.CTkLabel(
             status_frame,
             text="TRẠNG THÁI",
@@ -323,8 +311,7 @@ class ModernUI(ctk.CTk):
             text_color="#ffffff"
         )
         status_label.grid(row=0, column=0, padx=15, pady=(15, 0), sticky="w")
-        
-        # Status text with custom styling
+
         self.status_text = ctk.CTkTextbox(
             status_frame,
             height=100,
